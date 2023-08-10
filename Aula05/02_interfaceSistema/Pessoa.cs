@@ -25,6 +25,4 @@ public class Pessoa:IEquatable<Pessoa>{
                 return false;
         }
     }
-    
-
 }
