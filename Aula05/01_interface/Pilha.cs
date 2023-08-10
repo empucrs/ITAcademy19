@@ -1,4 +1,11 @@
-public class Pilha: IPilha{
+public class Pilha: IPilha, IUmaCoisa, IOutraCoisa{
+    void IUmaCoisa.metodo(){
+        Console.WriteLine("Um metodo da interface UmaCoisa;");
+    }
+
+    void IOutraCoisa.metodo(){
+        Console.WriteLine("Outra coisa do método;");
+    }
 
     private List<object> minhaListaDeObjetos;
     private int nElementos;
@@ -13,10 +20,10 @@ public class Pilha: IPilha{
         nElementos++;
     }
 
-    public object Desempilha(){
+    public object? Desempilha(){
         if(nElementos>0){
             object aux = minhaListaDeObjetos[nElementos-1];
-            minhaListaDeObjetos.removeAt(nElementos-1);
+            minhaListaDeObjetos.RemoveAt(nElementos-1);
             nElementos--;
             return aux;
         }
@@ -24,13 +31,17 @@ public class Pilha: IPilha{
             return null;
     }
 
-    public object Topo{
+    public object? Topo{
         get{
             if(nElementos>0)
                 return minhaListaDeObjetos[nElementos-1];
             else
                 return null;
         }
+    }
+
+    public int QtdeElementos{
+        get{return minhaListaDeObjetos.Count;}
     }
 
     
